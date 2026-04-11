@@ -88,12 +88,3 @@ Next steps / ideas
 
 References
 - `workflow.ipynb` — interactive walkthrough (this folder)
-- `main.py` — scripted example (this folder)
-
-If you want, I can:
-- add a `requirements.txt` or `pyproject.toml` for reproducible installs,
-- add a tiny test that exercises `get_weather_forecast`, or
-- expand the README with architecture diagrams and expected message shapes.
-
----
-Generated from the repository's `workflow.ipynb` and `main.py` examples.
