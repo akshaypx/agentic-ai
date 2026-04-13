@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic Price Optimizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Agentic Product Search</p>
+        <h1>See extraction, planning, search, ranking, and price recommendation happen live.</h1>
+        <p class="hero-text">
+          The backend uses one Gemini model for intent extraction, supervisor routing, ranking, and final recommendation.
+          Google Shopping drives product discovery, and Google Lens is added when you provide a public image URL.
+        </p>
+      </div>
+      <form id="search-form" class="control-panel">
+        <label>
+          <span>Product Query</span>
+          <textarea id="query" placeholder="Example: Find the best Nikon Z6 II camera under $1800 with good reviews" required></textarea>
+        </label>
+        <label>
+          <span>Image URL for Google Lens (optional)</span>
+          <input id="image-url" type="url" placeholder="https://..." />
+        </label>
+        <div class="actions">
+          <button id="submit-btn" type="submit">Run Workflow</button>
+          <div class="status-pill" id="run-status">Idle</div>
+        </div>
+      </form>
+    </section>
+
+    <section class="dashboard">
+      <div class="panel timeline-panel">
+        <div class="panel-head">
+          <h2>Backend Steps</h2>
+        </div>
+        <div id="steps" class="steps"></div>
+      </div>
+
+      <div class="panel stats-panel">
+        <div class="panel-head">
+          <h2>Recommendation</h2>
+        </div>
+        <div id="recommendation" class="recommendation empty">Run a query to generate the final recommendation.</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>Average Price</span>
+            <strong id="avg-price">-</strong>
+          </div>
+          <div class="stat-card">
+            <span>Minimum Price</span>
+            <strong id="min-price">-</strong>
+          </div>
+          <div class="stat-card">
+            <span>Maximum Price</span>
+            <strong id="max-price">-</strong>
+          </div>
+          <div class="stat-card">
+            <span>Total Ranked</span>
+            <strong id="total-ranked">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results panel">
+      <div class="panel-head results-head">
+        <h2>Ranked Products</h2>
+        <input id="table-filter" type="search" placeholder="Filter products, sources, or reasons" />
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Product</th>
+              <th>Source</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th>Confidence</th>
+              <th>Weightage</th>
+              <th>Reasons</th>
+            </tr>
+          </thead>
+          <tbody id="results-body">
+            <tr>
+              <td colspan="8" class="empty-row">No results yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
